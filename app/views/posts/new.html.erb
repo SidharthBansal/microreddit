@@ -1,2 +1,4 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<% provide(:title, "New Post") %>
+
+<%= provide(:button_text, "Create New Post") %>
+<%= render 'post_form' %>

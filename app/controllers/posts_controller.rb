@@ -4,9 +4,10 @@ class PostsController < ApplicationController
   end
 
   def create
+    @post = Post.new(post_params)
     if @post.save
       flash[:success] = "New Post is successfully created"
-      redirect_to @post
+      redirect_to posts_path
     else
       render 'new'
     end
@@ -31,4 +32,10 @@ class PostsController < ApplicationController
   def destroy
 
   end
+
+  private
+
+    def post_params
+      params.require(:post).permit(:title, :desscription)
+    end
 end

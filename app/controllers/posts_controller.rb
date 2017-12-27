@@ -4,7 +4,12 @@ class PostsController < ApplicationController
   end
 
   def create
-
+    if @post.save
+      flash[:success] = "New Post is successfully created"
+      redirect_to @post
+    else
+      render 'new'
+    end
   end
 
   def index

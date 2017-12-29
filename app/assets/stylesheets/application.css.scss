@@ -13,7 +13,8 @@
  *= require_tree .
  *= require_self
  */
-
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
  @charset "UTF-8";
  .navigation {
    height: 70px;

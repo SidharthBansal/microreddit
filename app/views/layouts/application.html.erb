@@ -9,6 +9,31 @@
   </head>
 
   <body>
+    <section class="navigation">
+  <div class="nav-container">
+    <div class="brand">
+      <%= link_to "Microreddit", root_url %>
+    </div>
+    <nav>
+      <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+      <ul class="nav-list">
+        <li>
+          <%= link_to "Home", static_pages_home_url %>
+        </li>
+        <li>
+          <%= link_to "Help", static_pages_help_url %>
+        </li>
+        <li>
+          <%= link_to "Contact", static_pages_contact_url %>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</section>
+
+<article>
     <%= yield %>
+  </article>
+
   </body>
 </html>

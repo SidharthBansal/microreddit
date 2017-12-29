@@ -11,7 +11,7 @@ gem 'rails', '~> 5.1.4'
 group :development, :test do
   gem 'sqlite3'
 end
-
+gem 'bcrypt', '~> 3.1', '>= 3.1.11'
 group :production do
   gem 'pg'
 end

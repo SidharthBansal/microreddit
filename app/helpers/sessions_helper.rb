@@ -30,4 +30,7 @@ module SessionsHelper
     session.delete(:user_id)
     @current_user = nil
   end
+  def forget
+    update_attribute(:remember_digest, nil)
+  end
 end

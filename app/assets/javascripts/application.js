@@ -15,6 +15,7 @@
 //= require_tree .
 //= require jquery
 //= require bootstrap-sprockets
+//= require bootstrap
 (function($) { // Begin jQuery
   $(function() { // DOM ready
     // If a link has a dropdown, add sub menu toggle.

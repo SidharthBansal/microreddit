@@ -19,3 +19,9 @@ User.create!(name:  "Example User",
                activated_at: Time.zone.now)
 
 end
+users = User.order(:created_at).take(8)
+50.times do
+  title = Faker::Lorem.words(rand(2..3)).join(" ")
+  description = Faker::Lorem.sentence(9)
+  users.each { |user| user.posts.create!(title: title, description: description) }
+end

@@ -29,3 +29,26 @@ post_<%= n %>:
   user: michael
   created_at: <%= 43.days.ago %>
 <% end %>
+ants:
+  title: "Oh, is that"
+  description: "Oh, is that what you want? Because that's how you get ants!"
+  created_at: <%= 2.years.ago %>
+  user: archer
+
+zone:
+  title: "Danger zone!"
+  description: "Oh, is that what you want? Because that's how you get ants!"
+  created_at: <%= 3.days.ago %>
+  user: archer
+
+tone:
+  title: "I'm sorry."
+  description: "Oh, is that what you want? Because that's how you get ants!"
+  created_at: <%= 10.minutes.ago %>
+  user: lana
+
+van:
+  title: "Dude, this van's"
+  description: "Oh, is that what you want? Because that's how you get ants!"
+  created_at: <%= 4.hours.ago %>
+  user: lana

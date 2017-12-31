@@ -21,4 +21,14 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
     end
   end
+
+  test "should redirect destroy for wrong post" do
+    log_in_as(users(:michael))
+    post = posts(:ants)
+    assert_no_difference 'Post.count' do
+      delete post_path(post)
+    end
+    assert_redirected_to root_url
+  end
+
 end

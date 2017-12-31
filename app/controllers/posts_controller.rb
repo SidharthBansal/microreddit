@@ -1,16 +1,13 @@
 class PostsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
-  def new
-    @post = Post.new
-  end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = "New Post is successfully created"
-      redirect_to posts_path
+      redirect_to root_path
     else
-      render 'new'
+      render 'static_pages/home'
     end
   end
 
@@ -18,16 +15,9 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
-  def show
-
-  end
-
   def edit
-
   end
-
   def update
-
   end
 
   def destroy

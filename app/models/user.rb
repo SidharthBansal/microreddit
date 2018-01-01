@@ -13,7 +13,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
-
+  has_many :following, through: :active_relationships, source: :followed
   # Returns the hash digest of the given string.
     def User.digest(string)
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -67,7 +67,19 @@ class User < ApplicationRecord
       def feed
         Post.where("user_id = ?", id)
       end
+      def follow(other_user)
+          following << other_user
+        end
 
+        # Unfollows a user.
+        def unfollow(other_user)
+          following.delete(other_user)
+        end
+
+        # Returns true if the current user is following the other user.
+        def following?(other_user)
+          following.include?(other_user)
+        end
     private
 
     # Converts to lower case

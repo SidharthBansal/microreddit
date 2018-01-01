@@ -77,7 +77,7 @@ class UserTest < ActiveSupport::TestCase
       assert_equal posts(:most_recent), Post.first
     end
 
-    test "associated microposts should be destroyed" do
+    test "associated posts should be destroyed" do
       @user.save
       @user.posts.create!(title: "this is the title ",
                           description: "this is the description of the first post. Hope you have liked the post")
@@ -95,4 +95,21 @@ class UserTest < ActiveSupport::TestCase
       michael.unfollow(archer)
       assert_not michael.following?(archer)
     end
+    test "feed should have the right posts" do
+  michael = users(:michael)
+  archer  = users(:archer)
+  lana    = users(:lana)
+  # Posts from followed user
+  lana.posts.each do |post_following|
+    assert michael.feed.include?(post_following)
+  end
+  # Posts from self
+  michael.posts.each do |post_self|
+    assert michael.feed.include?(post_self)
+  end
+  # Posts from unfollowed user
+  archer.posts.each do |post_unfollowed|
+    assert_not michael.feed.include?(post_unfollowed)
+  end
+end
 end

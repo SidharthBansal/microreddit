@@ -1,19 +1,21 @@
 Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
-
   get 'sessions/new'
-
-    get 'home', to: 'static_pages#home'
-
+  get 'home', to: 'static_pages#home'
   get 'help', to: 'static_pages#help'
+  get 'contact', to: 'static_pages#contact'
 
-    get 'contact', to: 'static_pages#contact'
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
 
   resources :posts
   resources :users
   root 'static_pages#home'
   get  '/signup',  to: 'users#new'
-
+  resources :relationships, only: [:create, :destroy]
   get  '/login',  to: 'sessions#new'
   post  '/login',  to: 'sessions#create'
   delete  '/logout',  to: 'sessions#destroy'

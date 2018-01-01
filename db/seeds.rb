@@ -25,3 +25,11 @@ users = User.order(:created_at).take(8)
   description = Faker::Lorem.sentence(9)
   users.each { |user| user.posts.create!(title: title, description: description) }
 end
+
+# Following relationships
+users = User.all
+user  = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }

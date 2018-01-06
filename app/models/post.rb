@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
+  has_many :comments
   default_scope -> { order(created_at: :desc) }
   validates :title, length: {maximum: 50, minimum: 3},
                     presence: true

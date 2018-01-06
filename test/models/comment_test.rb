@@ -23,4 +23,22 @@ class CommentTest < ActiveSupport::TestCase
     @comment.post = nil
     assert_not @comment.valid?
   end
+
+  test "title should be present and should have length between 5 and 15" do
+    @comment.title = nil
+    assert_not @comment.valid?
+    @comment.title = 'a'*4
+    assert_not @comment.valid?
+    @comment.title = 'a'*16
+    assert_not @comment.valid?
+  end
+
+  test "body should be present and should have length between 5 and 15" do
+    @comment.body = nil
+    assert_not @comment.valid?
+    @comment.body = 'a'*4
+    assert_not @comment.valid?
+    @comment.body = 'a'*51
+    assert_not @comment.valid?
+  end
 end

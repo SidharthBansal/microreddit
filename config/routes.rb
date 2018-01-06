@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'help', to: 'static_pages#help'
   get 'contact', to: 'static_pages#contact'
 
+  get  '/signup',  to: 'users#new'
+  post '/signup',  to: 'users#create'
   resources :users do
     member do
       get :following, :followers
@@ -12,9 +14,7 @@ Rails.application.routes.draw do
   end
 
   resources :posts
-  resources :users
   root 'static_pages#home'
-  get  '/signup',  to: 'users#new'
   resources :relationships, only: [:create, :destroy]
   get  '/login',  to: 'sessions#new'
   post  '/login',  to: 'sessions#create'

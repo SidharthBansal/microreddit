@@ -18,6 +18,10 @@ class UsersSignUpTest < ActionDispatch::IntegrationTest
                                         password_confirmation: "foo"}}
     end
     assert_template 'users/new'
+    assert_select 'div#error_explanation'
+    assert_select 'div.alert-danger'
+
+    assert_select 'div.alert'
   end
 
   test "valid sign_up with account activation" do
